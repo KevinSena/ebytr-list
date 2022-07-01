@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  mysql:
+    container_name: list-db
+    image: mysql
+    platform: linux/x86_64
+    environment: 
+      MYSQL_ROOT_PASSWORD: "root"
+    ports: 
+      - "3306:3306"
+    volumes: 
+      - "./migration.sql:/docker-entrypoint-initdb.d/init.sql"
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-proot" ]
+      timeout: 10s
+      retries: 10
+      start_period: 10s
+
+  # backend:
+  #   build: ./backend
+  #   container_name: app_backend
+  #   depends_on:
+  #     mysql:
+  #       condition: service_healthy
+  #   ports:
+  #     - 3001:3001
+  #   platform: linux/x86_64
+  #   restart: 'always'
+  #   healthcheck:
+  #     test: ["CMD", "lsof", "-t", "-i:3001"]
+  #     timeout: 10s
+  #     retries: 5
+  #   environment:S
+  #     APP_PORT: "3001"
+  #     MYSQL_URI: "mysql://root:root@mysql:3306/list"
