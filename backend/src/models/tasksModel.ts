@@ -13,7 +13,8 @@ export default class TasksModel implements ITasksModel {
       `SELECT dayTasks.id, dayTasks.day, dayTasks.task, dayTasks.description, dayTasks.feeling, priorities.priority
       FROM dayTasks INNER JOIN priorities
       ON dayTasks.priorityId = priorities.id
-      WHERE userId=? AND day=DATE(NOW());`,
+      WHERE userId=? AND cast (day as date) = DATE(NOW())
+      ORDER BY day ASC;`,
       [id],
     );
     const [tomorrow] = await this.mysql.execute(
@@ -36,7 +37,7 @@ export default class TasksModel implements ITasksModel {
   ): Promise<string | undefined> {
     const [rows] = await this.mysql.execute(
       `INSERT INTO dayTasks (userId, day, task, description, feeling, priorityId) VALUES
-      (?, DATE(NOW()), ?, ?, ?, ?);`,
+      (?, NOW(), ?, ?, ?, ?);`,
       [userId, task, description, feeling, priorityId],
     );
     const res = JSON.stringify(rows);

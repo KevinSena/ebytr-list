@@ -17,7 +17,7 @@ CREATE TABLE `priorities` (
 CREATE TABLE `dayTasks` (
   `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `userId` INT,
-  `day` DATE NOT NULL,
+  `day` DATETIME NOT NULL,
   `task` TEXT NOT NULL,
   `description` TEXT NOT NULL,
   `feeling` TEXT NOT NULL,
@@ -35,4 +35,4 @@ INSERT INTO `priorities` (`priority`) VALUES
   ('Pronto');
 
 INSERT INTO `dayTasks` (`userId`, `day`, `task`, `description`, `feeling`, `priorityId`) VALUES
-  (1, STR_TO_DATE('04,07,2022','%d,%m,%Y'), 'Wake Up', 'Wake up at 8 hour', 'Not Good', 3);
+  (1, NOW(), 'Wake Up', 'Wake up at 8 hour', 'Not Good', 3);
