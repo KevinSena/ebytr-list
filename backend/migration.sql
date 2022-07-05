@@ -27,7 +27,7 @@ CREATE TABLE `dayTasks` (
 );
 
 INSERT INTO `users` (`nickname`, `username`, `password`) VALUES
-  ('kevin', 'Kevin de Souza Sena', '$2a$08$Y8Abi8jXvsXyqm.rmp0B.uQBA5qUz7T6Ghlg/CvVr/gLxYj5UAZVO');
+  ('kevin', 'Kevin de Souza Sena', '$2a$08$Y8Abi8jXvsXyqm.rmp0B.uQBA5qUz7T6Ghlg/CvVr/gLxYj5UAZVO'); -- secret_user
 
 INSERT INTO `priorities` (`priority`) VALUES
   ('Pendente'),

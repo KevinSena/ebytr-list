@@ -1,6 +1,23 @@
 version: '3'
 
 services:
+  frontend:
+    build: ./frontend
+    platform: linux/x86_64
+    container_name: app_frontend
+    ports:
+      - 3000:3000
+    command: npm run dev
+    depends_on:
+      backend:
+        condition: service_healthy
+    volumes:
+      - './frontend:/app'
+    healthcheck:
+      test: ["CMD", "lsof", "-t", "-i:3000"]  # Caso utilize outra porta interna para o front, altere ela aqui também
+      timeout: 10s
+      retries: 5
+
   mysql:
     container_name: list-db
     image: mysql
