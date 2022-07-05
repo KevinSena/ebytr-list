@@ -1,4 +1,3 @@
-// import * as joi from 'joi';
 import { compare } from 'bcryptjs';
 import ResError from '../utils/ResError';
 import IUserModel from '../models/interfaces/IUserModel';
@@ -12,23 +11,9 @@ export default class UserService implements IUserService {
     this.model = model;
   }
 
-  // private idJoi = joi.object({
-  //   id: joi.string().alphanum().required(),
-  // });
-
   private jwt = new JwtConfig();
 
   private UNAUTH = 'Incorrect nick or password';
-
-  // async findById(id: string): Promise<IUser> {
-  //   try {
-  //     await this.idJoi.validateAsync({ id });
-  //   } catch (error: any) {
-  //     throw new ResError(error.message, 400);
-  //   }
-  //   const result = await this.model.findById(id);
-  //   return result;
-  // }
 
   private async validatePassword(comingPassword: string, password: string): Promise<void> {
     const isValid = await compare(comingPassword, password);

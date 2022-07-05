@@ -8,7 +8,5 @@ export type IUPayload = {
 };
 
 export default interface IUserService {
-  // findById(id: string): Promise<IUser>
   login(nickname: string, password: string): Promise<IUPayload | undefined>
-  // getToken(id: string, nickname: string, password: string): Promise<string | undefined>
 }

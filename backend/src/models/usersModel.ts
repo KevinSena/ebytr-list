@@ -18,15 +18,6 @@ export default class UserModel implements IUserModel {
   //   return JSON.parse(res).insertId;
   // }
 
-  // async findById(id: string): Promise<IUser> {
-  //   const [rows] = await this.mysql.execute(
-  //     'SELECT * FROM users WHERE id = ?',
-  //     [id],
-  //   );
-  //   const res = JSON.stringify(rows);
-  //   return JSON.parse(res) as IUser;
-  // }
-
   async findByNick(nickname: string): Promise<IUser> {
     const [rows] = await this.mysql.execute(
       'SELECT * FROM users WHERE nickname = ?',

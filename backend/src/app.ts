@@ -2,6 +2,7 @@ import * as express from 'express';
 import * as cors from 'cors';
 import handleError from './middlewares/error';
 import userRoute from './routes/userRoute';
+import tasksRoute from './routes/tasksRoute';
 
 class App {
   public app: express.Express;
@@ -24,6 +25,7 @@ class App {
     this.app.use(express.json());
 
     this.app.use('/user', userRoute);
+    this.app.use('/tasks', tasksRoute);
 
     this.app.use(handleError);
   }
