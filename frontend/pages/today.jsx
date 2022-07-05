@@ -25,10 +25,10 @@ export default function Tasks() {
   return (
     <div className="w-full min-h-screen bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500">
       <div className="mx-auto pt-6 max-w-screen-lg flex">
-        <div className="w-2/6">
+        <div className="w-3/6">
           <InfoCard />
         </div>
-        <div className="w-4/6">
+        <div className="w-3/6">
           {
             tasks.map((e, i) => (
               <TaskCard key={i} task={e} />

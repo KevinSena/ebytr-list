@@ -5,17 +5,15 @@ import AppContext from './AppContext';
 import { useRouter } from 'next/router';
 
 function Provider({ children }) {
-  const [user, setUser] = useState({});
   const [tasks, setTasks] = useState([]);
   const [taskSeted, setTaskSeted] = useState({});
   const route = useRouter()
 
-  const contextValue = { setUser, user, setTasks, tasks, taskSeted, setTaskSeted };
+  const contextValue = { setTasks, tasks, taskSeted, setTaskSeted };
 
   useEffect(() => {
     try {
       const data = JSON.parse(localStorage.getItem('login'));
-      setUser(data.token)
     } catch (error) {
       route.push('/')
     }

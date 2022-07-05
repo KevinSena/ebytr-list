@@ -35,4 +35,7 @@ INSERT INTO `priorities` (`priority`) VALUES
   ('Pronto');
 
 INSERT INTO `dayTasks` (`userId`, `day`, `task`, `description`, `feeling`, `priorityId`) VALUES
-  (1, NOW(), 'Wake Up', 'Wake up at 8 hour', 'Not Good', 3);
+  (1, NOW(), 'Academia', 'Ir a academia no centro', '', 3),
+  (1, NOW(), 'Reunião', 'Reunão do squad pelo zoom', 'Estou ancioso', 2),
+  (1, NOW(), 'Devocional', 'Ler Mateus para todos cap. 14', 'Not Good', 1),
+  (1, NOW(), 'Visita', 'Visitar amigo que está doente', 'Not Good', 1);

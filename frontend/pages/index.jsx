@@ -6,22 +6,20 @@ import loginRequest from '../services/loginRequest';
 export default function Login() {
   const [userInput, setUserInput] = useState('');
   const [passInput, setPassInput] = useState('');
-  const { setUser, user } = useContext(AppContext)
   const router = useRouter()
 
-  // useEffect(() => {
-  //   const data = JSON.parse(localStorage.getItem('login'));
-  //   if (data.token) {
-  //     router.push('/today')
-  //   }
-  // }, []);
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem('login'));
+    if (data.token) {
+      router.push('/today')
+    }
+  }, []);
 
   const login = async (event) => {
     event.preventDefault();
     try {
       const data = await loginRequest(userInput, passInput)
       localStorage.setItem('login', JSON.stringify(data))
-      setUser(data)
       router.push('/today')
     } catch (error) {
       console.log(error);
